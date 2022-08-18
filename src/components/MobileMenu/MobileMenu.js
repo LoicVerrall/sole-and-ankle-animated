@@ -11,8 +11,18 @@ import VisuallyHidden from '../VisuallyHidden';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
-    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
-      <Content aria-label="Menu">
+    <Overlay
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      style={{
+        opacity: isOpen ? 1.0 : 0.0,
+        transition: 'opacity',
+        transitionDuration: isOpen ? '1000ms' : '500ms',
+        transitionDelay: isOpen ? '0ms' : '100ms',
+        transitionTimingFunction: isOpen ? 'ease-out' : 'ease-in',
+      }}
+    >
+      >
         <CloseButton onClick={onDismiss}>
           <Icon id="close" />
           <VisuallyHidden>Dismiss menu</VisuallyHidden>
